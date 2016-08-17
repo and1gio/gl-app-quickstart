@@ -15,27 +15,28 @@ hs_err_pid*
 *.pid
 *.seed
 
-# for text editors
-*.*~
-
 # nbproject for netbeans
 **/nbproject/
-**/node_modules/
+/node_modules
 
 # for idea
-*.iml
 **/.idea/
 **/target/
 
 # for visual studio
 *.njsproj
-**/*.sln
 **/.vs/
 **/.ntvs_analysis.dat
 **/obj/Debug
 
-# Bower
-**/bower_components
+# public bower components
+/public/assets/libs/bower_components/**
+
+# public npm components
+/public/assets/libs/npm_components/**
 
 # Mac Folder Structure
 **/.DS_Store
+
+# Dont Ignore
+!**/*.md
