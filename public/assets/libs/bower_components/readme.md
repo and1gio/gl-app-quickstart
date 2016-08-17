@@ -1,1 +1,1 @@
-**modules from bower repository**
+**components from bower repository [bower repository](https://bower.io/search/)**

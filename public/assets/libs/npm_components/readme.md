@@ -1,1 +1,1 @@
-**copied modules from node_modules directory : [npm repository](http://npmjs.com)**
+**components from node_modules directory : [npm repository](https://www.npmjs.com)**

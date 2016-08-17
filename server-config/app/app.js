@@ -29,7 +29,7 @@ exports.staging = function (app) {
     return {
         app: {
             defaultLanguage: "en",
-            frontEndDebugMode: true
+            frontEndDebugMode: false
         }
     }
 };

@@ -1,1 +1,1 @@
-**custom libraries which one are not in bower & npm**
+**custom components which are not in bower & npm repositories**

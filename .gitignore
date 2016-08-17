@@ -17,6 +17,7 @@ hs_err_pid*
 
 # nbproject for netbeans
 **/nbproject/
+
 /node_modules
 
 # for idea

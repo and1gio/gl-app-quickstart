@@ -1,0 +1,31 @@
+{
+    "webpack": {
+        "angular": {
+            "entry": "./client/angular/app.js",
+            "output": {
+                "filename": "./public/assets/js/app-bundle.js"
+            },
+            "debug": false,
+            "colors": true,
+            "devtool": "inline-source-map"
+        }
+    },
+
+    "template": {
+        "input": ["./client/angular/templates/**/*.html", "./client/angular/templates/**/*.jade"],
+        "output": "./public/assets/templates"
+    },
+
+    "stylesheet": {
+        "sass": {
+            "input": "./client/stylesheets/sass/**/*.scss",
+            "output": "./public/assets/css"
+        }
+    },
+
+    "copy": {
+        "npmComponents": {
+            "./node_modules/abbrev": "./public/assets/libs/npm_components/abbrev"
+        }
+    }
+}

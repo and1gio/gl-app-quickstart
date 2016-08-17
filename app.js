@@ -31,8 +31,8 @@ const app = {
         },
 
         config: {
-            app: dir + '/config/app/',
-            core: dir + '/config/core/'
+            app: dir + '/server-config/app/',
+            core: dir + '/server-config/core/'
         },
 
         route: dir + '/server/app/routes/',
