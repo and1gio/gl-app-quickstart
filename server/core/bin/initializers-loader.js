@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require("fs");
 
 module.exports = function (app, cb) {
@@ -40,21 +42,16 @@ var startInitializer = function (app, initializers, index, cb) {
         return cb();
     }
 
-    //if (!initializer.disabled) {
-        console.log('INITIALIZING: [' + initializer.name + '].');
-        initializer.runFn(app, function (err) {
-            if (err) {
-                console.log(err);
-                process.exit(1);
-            }
+    console.log('INITIALIZING: [' + initializer.name + '].');
+    initializer.runFn(app, function (err) {
+        if (err) {
+            console.log(err);
+            process.exit(1);
+        }
 
-            index++;
-            startInitializer(app, initializers, index, cb);
-        });
-    //}else{
-    //    index++;
-    //    startInitializer(app, initializers, index, cb);
-    //}
+        index++;
+        startInitializer(app, initializers, index, cb);
+    });
 };
 
 var loadInitializers = function (app) {

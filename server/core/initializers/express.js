@@ -1,10 +1,10 @@
-
+'use strict';
 
 module.exports = {
     runFn: function (app, next) {
-        const express = require('express');
-        const cookieParser = require('cookie-parser');
-        const bodyParser = require('body-parser');
+        let express = require('express');
+        let cookieParser = require('cookie-parser');
+        let bodyParser = require('body-parser');
 
         // const logger = require('morgan');
         // const path = require('path');

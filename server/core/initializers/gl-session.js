@@ -1,9 +1,9 @@
-
+'use strict';
 
 module.exports = {
     runFn: function (app, next) {
-        const session = require('express-session');
-        const GLSessionServerClient = require('gl-session-server-client')(session);
+        let session = require('express-session');
+        let GLSessionServerClient = require('gl-session-server-client')(session);
 
         app.express.use(session({
             store: new GLSessionServerClient({

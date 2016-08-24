@@ -1,9 +1,11 @@
+'use strict';
+
 module.exports = {
     runFn: function (app, next) {
         app.filter = {};
 
         for (var i in app.config.filter) {
-            const module = require(app.folderPath.filter + app.config.filter[i])(app);
+            let module = require(app.folderPath.filter + app.config.filter[i])(app);
             app.filter[i] = {};
 
             for (var j in module) {

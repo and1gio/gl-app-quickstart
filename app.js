@@ -1,25 +1,25 @@
-#!/usr/bin/env node
+'use strict';
 
 /**
  * Module dependencies.
  */
-const initializersLoader = require("./server/core/bin/initializers-loader");
+let initializersLoader = require("./server/core/bin/initializers-loader");
 
 /**
  * Current Directory
  */
-const dir = __dirname;
+let dir = __dirname;
 
 /**
  * Required Modules
  */
-const fs = require("fs");
-const camelCase = require('camelcase');
+let fs = require("fs");
+let camelCase = require('camelcase');
 
 /**
  * load initializers
  */
-const app = {
+let app = {
     folderPath: {
         root: dir,
 
@@ -59,11 +59,9 @@ const app = {
 
                 if(rootDir && rootDir.length > 0){
                     rootDir.forEach(function (file) {
-                        const nameParts = file.split('/');
-                        const name = camelCase(nameParts[(nameParts.length - 1)].split(".")[0]);
-                        const filePath = dir + file;
-
-                        console.log(filePath);
+                        let nameParts = file.split('/');
+                        let name = camelCase(nameParts[(nameParts.length - 1)].split(".")[0]);
+                        let filePath = dir + file;
 
                         if (fs.lstatSync(filePath).isDirectory()) {
                             namespace[name] = {};

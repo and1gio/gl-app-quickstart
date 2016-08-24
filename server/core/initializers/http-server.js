@@ -1,11 +1,13 @@
+'use strict';
+
 module.exports = {
     runFn: function (app, next) {
-        const http = require('http');
+        let http = require('http');
 
         /**
          * Create HTTP server.
          */
-        const server = http.createServer(app.express);
+        let server = http.createServer(app.express);
 
         /**
          * Listen on provided port, on all network interfaces.

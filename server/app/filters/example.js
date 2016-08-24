@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function (app) {
     return {
         example1: function (req, res, next) {

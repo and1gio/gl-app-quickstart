@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
     runFn: function (app, next) {
         app.validator = {
