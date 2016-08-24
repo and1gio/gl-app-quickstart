@@ -37,6 +37,8 @@ let app = {
 
         route: dir + '/server/app/routes/',
 
+        class: dir + '/server/core/classes/',
+
         businessLogic: dir + '/server/app/business-logic/',
 
         filter: dir + '/server/app/filters/',
