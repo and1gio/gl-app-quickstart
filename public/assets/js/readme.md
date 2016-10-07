@@ -1,1 +1,0 @@
-**application bundled javascript files**

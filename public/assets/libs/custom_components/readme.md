@@ -1,1 +1,0 @@
-**custom components which are not in bower & npm repositories**

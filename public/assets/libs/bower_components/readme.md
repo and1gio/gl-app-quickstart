@@ -1,1 +1,0 @@
-**components from bower repository [bower repository](https://bower.io/search/)**

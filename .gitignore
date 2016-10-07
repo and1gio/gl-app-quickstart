@@ -30,14 +30,5 @@ hs_err_pid*
 **/.ntvs_analysis.dat
 **/obj/Debug
 
-# public bower components
-/public/assets/libs/bower_components/**
-
-# public npm components
-/public/assets/libs/npm_components/**
-
 # Mac Folder Structure
 **/.DS_Store
-
-# Dont Ignore
-!**/*.md

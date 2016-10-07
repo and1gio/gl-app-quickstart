@@ -1,14 +1,14 @@
 'use strict';
 
 /**
- * Module dependencies.
- */
-let initializersLoader = require("./server/core/bin/initializers-loader");
-
-/**
  * Current Directory
  */
 let dir = __dirname;
+
+/**
+ * Module dependencies.
+ */
+let initializersLoader = require("./core/bin/initializers-loader");
 
 /**
  * Required Modules
@@ -23,32 +23,30 @@ let app = {
     folderPath: {
         root: dir,
 
-        public: dir + '/public',
-
         initializer: {
-            core: dir + '/server/core/initializers/',
-            app: dir + '/server/app/initializers/'
+            core: dir + '/core/initializers/',
+            app: dir + '/app/initializers/'
         },
 
         config: {
-            app: dir + '/server-config/app/',
-            core: dir + '/server-config/core/'
+            app: dir + '/config/app/',
+            core: dir + '/config/core/'
         },
 
-        route: dir + '/server/app/routes/',
+        route: dir + '/app/routes/',
 
-        class: dir + '/server/core/classes/',
+        class: dir + '/core/classes/',
 
-        businessLogic: dir + '/server/app/business-logic/',
+        businessLogic: dir + '/app/business-logic/',
 
-        filter: dir + '/server/app/filters/',
-        validator: dir + '/server/app/validators/',
+        filter: dir + '/app/filters/',
+        validator: dir + '/app/validators/',
 
-        sessionDataLoader: dir + '/server/app/session-data-loaders/',
+        sessionDataLoader: dir + '/app/session-data-loaders/',
 
         middleware: {
-            beforeRoute: dir + '/server/app/middleware/before-route/',
-            afterRoute: dir + '/server/app/middleware/after-route/'
+            beforeRoute: dir + '/app/middleware/before-route/',
+            afterRoute: dir + '/app/middleware/after-route/'
         }
     },
 
@@ -107,6 +105,4 @@ let app = {
 /**
  * Start Initializer Loader
  */
-initializersLoader(app, function (err) {
-
-});
+initializersLoader(app, function (err) {});

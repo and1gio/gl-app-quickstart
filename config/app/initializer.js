@@ -23,7 +23,6 @@ exports.default = function (app) {
             { type: 'core', name: 'middleware-after-route', enabled: true },
 
             { type: 'core', name: 'http-server', enabled: true }
-
         ]
     }
 };
