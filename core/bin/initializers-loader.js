@@ -1,14 +1,16 @@
 'use strict';
 
 var fs = require("fs");
+var winston = require('winston');
 
 module.exports = function (app, cb) {
+    app.logger = winston;
 
     console.log("APPLICATION STARTED");
     console.log("=========================");
 
-    console.log('ROOT FOLDER:', app.folderPath.root);
-    console.log('MACHINE ENVIRONMENT:', app.env);
+    app.logger.info('ROOT FOLDER:', app.folderPath.root);
+    app.logger.info('MACHINE ENVIRONMENT:', app.env);
 
     require("./configs-loader")(app, function(){
         console.log("****************************");
@@ -42,10 +44,11 @@ var startInitializer = function (app, initializers, index, cb) {
         return cb();
     }
 
-    console.log('INITIALIZING: [' + initializer.name + '].');
-    initializer.runFn(app, function (err) {
+    app.logger.info(initializer.name);
+
+    initializer.run(app, function (err) {
         if (err) {
-            console.log(err);
+            app.logger.warn(err);
             process.exit(1);
         }
 
@@ -60,21 +63,23 @@ var loadInitializers = function (app) {
 
     for(var i in initializers){
         if(initializers[i].enabled){
+            var module = null;
             var name = initializers[i].name;
-            var path = app.folderPath.initializer[initializers[i].type];
-            var module = require(path + name);
+
+            switch (initializers[i].type) {
+                case 'module':
+                    module = require(name);
+                    break;
+                case 'core':
+                    var path = app.folderPath.initializer[initializers[i].type];
+                    module = require(path + name);
+                    break;
+                default:
+            }
             module.name = name;
             modules.push(module);
         }
     }
 
-    /*
-    fs.readdirSync(dir).forEach(function (file) {
-        var name = file.split(".")[0];
-        var module = require(dir + "/" + file);
-        module.name = name;
-        modules.push(module);
-    });
-    */
     return modules;
 };

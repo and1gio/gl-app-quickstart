@@ -4,8 +4,7 @@
 exports.default = function (app) {
     return {
         app: {
-            defaultLanguage: "en",
-            frontEndDebugMode: true
+            debug: true
         }
     }
 };
@@ -16,8 +15,7 @@ exports.default = function (app) {
 exports.development = function (app) {
     return {
         app: {
-            defaultLanguage: "en",
-            frontEndDebugMode: true
+            debug: true
         }
     }
 };
@@ -28,8 +26,7 @@ exports.development = function (app) {
 exports.staging = function (app) {
     return {
         app: {
-            defaultLanguage: "en",
-            frontEndDebugMode: false
+            debug: false
         }
     }
 };
@@ -40,8 +37,7 @@ exports.staging = function (app) {
 exports.production = function (app) {
     return {
         app: {
-            defaultLanguage: "en",
-            frontEndDebugMode: false
+            debug: false
         }
     }
 };

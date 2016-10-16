@@ -1,9 +1,11 @@
 'use strict';
 
 module.exports = {
-    runFn: function (app, next) {
+
+    run: function (app, next) {
         app.bl = {};
-        app.utils.readDir(app, app.bl, app.folderPath.businessLogic)
+        app.utils.buildModulesInFolder(app, app.bl, app.folderPath.app.root + app.config.businessLogic.rootDir + '/');
         next();
     }
+
 };

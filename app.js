@@ -3,25 +3,31 @@
 /**
  * Current Directory
  */
-let dir = __dirname;
+var dir = __dirname;
 
 /**
  * Module dependencies.
  */
-let initializersLoader = require("./core/bin/initializers-loader");
+var initializersLoader = require("./core/bin/initializers-loader");
 
 /**
  * Required Modules
  */
-let fs = require("fs");
-let camelCase = require('camelcase');
+var fs = require("fs");
+var camelCase = require('camelcase');
 
 /**
  * load initializers
  */
-let app = {
+var app = {
     folderPath: {
         root: dir,
+
+        app: {
+            root: dir + '/app/',
+            routes: dir + '/app/routes/',
+            middleware: dir + '/app/middleware/'
+        },
 
         initializer: {
             core: dir + '/core/initializers/',
@@ -34,8 +40,6 @@ let app = {
         },
 
         route: dir + '/app/routes/',
-
-        class: dir + '/core/classes/',
 
         businessLogic: dir + '/app/business-logic/',
 
@@ -53,22 +57,22 @@ let app = {
     env: process.env.NODE_ENV,
 
     utils: {
-        readDir: function (app, namespace, dir) {
-            if(fs.existsSync(dir)){
+        buildModulesInFolder: function (app, namespace, dir) {
+            if (fs.existsSync(dir)) {
                 var rootDir = fs.readdirSync(dir);
 
-                if(rootDir && rootDir.length > 0){
+                if (rootDir && rootDir.length > 0) {
                     rootDir.forEach(function (file) {
-                        let nameParts = file.split('/');
-                        let name = camelCase(nameParts[(nameParts.length - 1)].split(".")[0]);
-                        let filePath = dir + file;
+                        var nameParts = file.split('/');
+                        var name = camelCase(nameParts[(nameParts.length - 1)].split(".")[0]);
+                        var filePath = dir + file;
 
                         if (fs.lstatSync(filePath).isDirectory()) {
                             namespace[name] = {};
                             return app.utils.readDir(app, namespace[name], filePath);
                         } else {
                             if (fs.existsSync(filePath)) {
-                                const module = require(filePath);
+                                var module = require(filePath);
                                 namespace[name] = new module(app);
                             }
                         }
@@ -80,7 +84,7 @@ let app = {
             for (var i in fnNamespace) {
                 if (typeof fnNamespace[i] == "function" || typeof fnNamespace[i].fn == "function") {
                     asyncFunctions.push((function (index) {
-                        const fn = fnNamespace[index].fn || fnNamespace[index];
+                        var fn = fnNamespace[index].fn || fnNamespace[index];
                         return function (next) {
                             fn(req, function (err, res) {
                                 if (!err) {
@@ -105,4 +109,5 @@ let app = {
 /**
  * Start Initializer Loader
  */
-initializersLoader(app, function (err) {});
+initializersLoader(app, function (err) {
+});

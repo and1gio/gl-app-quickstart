@@ -1,6 +1,6 @@
 exports.default = function (app) {
     return {
-        route: {
+        zRoute: {
 
             /**
              * example { url-to-bind : module-path }

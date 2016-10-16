@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app, cb){
-    let fs = require("fs");
+    var fs = require("fs");
 
     app.config = {};
 
@@ -10,8 +10,8 @@ module.exports = function(app, cb){
 
     function loadConfig(configDir){
         fs.readdirSync(configDir).forEach(function (file) {
-            let module = require(configDir + '/' + file);
-            let configs = module[app.env] ? module[app.env](app) : module["default"](app);
+            var module = require(configDir + '/' + file);
+            var configs = module[app.env] ? module[app.env](app) : module["default"](app);
             for (var i in configs) {
                 app.config[i] = configs[i];
             }

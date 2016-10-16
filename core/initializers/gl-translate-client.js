@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-    runFn: function (app, next) {
-        let GLTranslateClient = require("gl-translate-client");
+    run: function (app, next) {
+        var GLTranslateClient = require("gl-translate-client");
         app.glTranslateClient = new GLTranslateClient(app.config.glTranslateClient);
         app.glTranslateClient.load(function (err, res) {
             if(err){

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    runFn: function (app, next) {
+    run: function (app, next) {
         app.validator = {
             buildErrorObject: function (errorArray) {
                 if (errorArray && errorArray.length > 0) {
@@ -12,7 +12,7 @@ module.exports = {
             }
         };
 
-        app.utils.readDir(app, app.validator, app.folderPath.validator);
+        app.utils.buildModulesInFolder(app, app.validator, app.folderPath.validator);
         next();
     }
 };

@@ -2,8 +2,8 @@
 
 module.exports = {
 
-    runFn: function (app, next) {
-        let GLErrorsClient = require("gl-errors-client");
+    run: function (app, next) {
+        var GLErrorsClient = require("gl-errors-client");
         app.glErrorsClient = new GLErrorsClient(app.config.glErrorsClient);
         app.glErrorsClient.load(function (err, res) {
             if (err) {

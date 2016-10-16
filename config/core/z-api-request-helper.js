@@ -3,11 +3,12 @@
  */
 exports.default = function (app) {
     return {
-        glApiRequestHelper: {
+        zApiRequestHelper: {
             exampleApi: {
                 host: 'localhost',
                 port: 8080,
-                path: '/api/'
+                path: '/api/',
+                debug: true
             }
         }
     }
@@ -18,7 +19,7 @@ exports.default = function (app) {
  */
 exports.development = function (app) {
     return {
-        glApiRequestHelper: {
+        zApiRequestHelper: {
             exampleApi: {
                 host: 'localhost',
                 port: 8080,
@@ -33,7 +34,7 @@ exports.development = function (app) {
  */
 exports.staging = function (app) {
     return {
-        glApiRequestHelper: {
+        zApiRequestHelper: {
             exampleApi: {
                 host: 'localhost',
                 port: 8080,
@@ -48,7 +49,7 @@ exports.staging = function (app) {
  */
 exports.production = function (app) {
     return {
-        glApiRequestHelper: {
+        zApiRequestHelper: {
             exampleApi: {
                 host: 'localhost',
                 port: 8080,

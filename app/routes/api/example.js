@@ -1,18 +1,14 @@
 'use strict';
 
-module.exports = function(app) {
+module.exports = function (app) {
 
-    /**
-     * import classes
-     */
-    let Route = require(app.folderPath.class + 'Route');
+    var router = require('express').Router();
 
-    let route = new Route(app);
-    route.init('post', '/hello', function(req, res, next){
+    router.post('/hello', function (req, res, next) {
         app.bl.example.hello(req, function (error, data) {
             error ? next(error) : res.json(data);
         });
     });
 
-    return route.getRouter();
+    return router;
 };

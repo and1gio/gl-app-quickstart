@@ -3,7 +3,7 @@
  */
 exports.default = function (app) {
     return {
-        glSessionServerClient: {
+        zSessionServerClient: {
             host: 'localhost',
             port: 5000,
             path: '/api/',
@@ -17,7 +17,7 @@ exports.default = function (app) {
  */
 exports.development = function (app) {
     return {
-        glSessionServerClient: {
+        zSessionServerClient: {
             host: 'localhost',
             port: 5000,
             path: '/api/',
@@ -31,7 +31,7 @@ exports.development = function (app) {
  */
 exports.staging = function (app) {
     return {
-        glSessionServerClient: {
+        zSessionServerClient: {
             host: 'localhost',
             port: 5000,
             path: '/api/',
@@ -45,7 +45,7 @@ exports.staging = function (app) {
  */
 exports.production = function (app) {
     return {
-        glSessionServerClient: {
+        zSessionServerClient: {
             host: 'localhost',
             port: 5000,
             path: '/api/',
