@@ -20,37 +20,13 @@ var camelCase = require('camelcase');
  * load initializers
  */
 var app = {
+
     folderPath: {
         root: dir,
-
         app: {
             root: dir + '/app/',
-            routes: dir + '/app/routes/',
-            middleware: dir + '/app/middleware/'
-        },
-
-        initializer: {
-            core: dir + '/core/initializers/',
-            app: dir + '/app/initializers/'
-        },
-
-        config: {
-            app: dir + '/config/app/',
-            core: dir + '/config/core/'
-        },
-
-        route: dir + '/app/routes/',
-
-        businessLogic: dir + '/app/business-logic/',
-
-        filter: dir + '/app/filters/',
-        validator: dir + '/app/validators/',
-
-        sessionDataLoader: dir + '/app/session-data-loaders/',
-
-        middleware: {
-            beforeRoute: dir + '/app/middleware/before-route/',
-            afterRoute: dir + '/app/middleware/after-route/'
+            initializer: dir + '/app/initializers/',
+            config: dir + '/app/config/'
         }
     },
 
@@ -69,7 +45,7 @@ var app = {
 
                         if (fs.lstatSync(filePath).isDirectory()) {
                             namespace[name] = {};
-                            return app.utils.readDir(app, namespace[name], filePath);
+                            return app.utils.buildModulesInFolder(app, namespace[name], filePath + '/');
                         } else {
                             if (fs.existsSync(filePath)) {
                                 var module = require(filePath);

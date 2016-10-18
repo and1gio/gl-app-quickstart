@@ -3,6 +3,57 @@
 var fs = require("fs");
 var winston = require('winston');
 
+var startInitializerChain = function (app, initializers, cb) {
+    var index = 0;
+    startInitializer(app, initializers, index, cb);
+};
+
+var startInitializer = function (app, initializers, index, cb) {
+    var initializer = initializers[index];
+    if (!initializer) {
+        return cb();
+    }
+
+    app.logger.info(initializer.name);
+
+    initializer.run(app, function (err) {
+        if (err) {
+            app.logger.warn(err);
+            process.exit(1);
+        }
+
+        index++;
+        startInitializer(app, initializers, index, cb);
+    });
+};
+
+var loadInitializers = function (app) {
+    var initializers = app.config.zInitializer;
+    var modules = [];
+
+    for(var i in initializers){
+        if(initializers[i].enabled){
+            var module = null;
+            var name = initializers[i].name;
+
+            switch (initializers[i].type) {
+                case 'module':
+                    module = require(name);
+                    break;
+                case 'app':
+                    var path = app.folderPath.app.initializer;
+                    module = require(path + name);
+                    break;
+                default:
+            }
+            module.name = name;
+            modules.push(module);
+        }
+    }
+
+    return modules;
+};
+
 module.exports = function (app, cb) {
     app.logger = winston;
 
@@ -31,55 +82,4 @@ module.exports = function (app, cb) {
         console.log("=========================");
         cb(err);
     });
-};
-
-var startInitializerChain = function (app, initializers, cb) {
-    var index = 0;
-    startInitializer(app, initializers, index, cb);
-};
-
-var startInitializer = function (app, initializers, index, cb) {
-    var initializer = initializers[index];
-    if (!initializer) {
-        return cb();
-    }
-
-    app.logger.info(initializer.name);
-
-    initializer.run(app, function (err) {
-        if (err) {
-            app.logger.warn(err);
-            process.exit(1);
-        }
-
-        index++;
-        startInitializer(app, initializers, index, cb);
-    });
-};
-
-var loadInitializers = function (app) {
-    var initializers = app.config.initializer;
-    var modules = [];
-
-    for(var i in initializers){
-        if(initializers[i].enabled){
-            var module = null;
-            var name = initializers[i].name;
-
-            switch (initializers[i].type) {
-                case 'module':
-                    module = require(name);
-                    break;
-                case 'core':
-                    var path = app.folderPath.initializer[initializers[i].type];
-                    module = require(path + name);
-                    break;
-                default:
-            }
-            module.name = name;
-            modules.push(module);
-        }
-    }
-
-    return modules;
 };

@@ -10,7 +10,7 @@ exports.default = function (app) {
             },
             afterRoute: {
                 rootDir: "middleware/after-route",
-                middleware: ['example-after-route']
+                middleware: ['example-after-route', 'error-handler']
             }
         }
     }

@@ -10,7 +10,7 @@ module.exports = function (app) {
          */
         var requestBody = req.body;
 
-        app.loggers.winstone.log('bl.hello > requestBody', requestBody);
+        app.logger.info('bl.hello > requestBody', requestBody);
 
         cb(null, requestBody);
     };

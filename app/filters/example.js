@@ -10,7 +10,7 @@ module.exports = function (app) {
             }
         },
         example2: function(data, req, res, next){
-            console.log(data);
+            app.logger.info(data);
             next();
         }
     }

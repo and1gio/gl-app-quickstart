@@ -5,8 +5,7 @@ module.exports = function(app, cb){
 
     app.config = {};
 
-    loadConfig(app.folderPath.config.core);
-    loadConfig(app.folderPath.config.app);
+    loadConfig(app.folderPath.app.config);
 
     function loadConfig(configDir){
         fs.readdirSync(configDir).forEach(function (file) {

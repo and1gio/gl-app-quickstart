@@ -3,8 +3,8 @@
  */
 exports.default = function (app) {
     return {
-        businessLogic : {
-            "rootDir" : "business-logic"
+        zRouteController : {
+            "rootDir" : "route-controllers"
         }
     }
 };
