@@ -14,5 +14,14 @@ module.exports = function (app) {
             });
         });
 
+    router.get(
+        '/renderPage',
+        app.filter.example.example2('joni'),
+        function (req, res, next) {
+            app.rc.example.hello(req, function (error, data) {
+                res.render('index', {error: error, data: data});
+            });
+        });
+
     return router;
 };
