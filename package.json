@@ -1,5 +1,6 @@
 {
   "name": "z-api-quickstart",
+  "description": "Z Api Quickstart",
   "version": "0.0.1",
   "scripts": {
     "start": "node ./app.js"
@@ -14,8 +15,8 @@
     "z-express-initializer": "0.0.3",
     "z-file-server-client-initializer": "0.0.2",
     "z-filter-initializer": "0.0.1",
-    "z-http-server-initializer": "0.0.1",
-    "z-route-controller-initializer": "0.0.1",
+    "z-http-server-initializer": "0.0.2",
+    "z-route-controller-initializer": "0.0.3",
     "z-route-initializer": "0.0.2",
     "z-session-initializer": "0.0.3",
     "z-translate-client-initializer": "0.0.1",

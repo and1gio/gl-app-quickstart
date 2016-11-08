@@ -9,7 +9,7 @@ module.exports = function (app) {
         app.filter.example.example2('joni'),
         app.validator.validate(app.validator.example.hello),
         function (req, res, next) {
-            app.rc.example.hello(req, function (error, data) {
+            app.routeController.example.hello(req, function (error, data) {
                 error ? next(error) : res.json(data);
             });
         });
@@ -18,7 +18,7 @@ module.exports = function (app) {
         '/renderPage',
         app.filter.example.example2('joni'),
         function (req, res, next) {
-            app.rc.example.hello(req, function (error, data) {
+            app.routeController.example.hello(req, function (error, data) {
                 res.render('index', {error: error, data: data});
             });
         });
