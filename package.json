@@ -8,6 +8,7 @@
   "dependencies": {
     "async": "2.0.1",
     "camelcase": "3.0.0",
+    "lodash": "4.17.0",
     "pug": "2.0.0-beta6",
     "winston": "2.2.0",
     "z-api-request-helper-initializer": "0.0.2",
@@ -20,7 +21,7 @@
     "z-route-initializer": "0.0.2",
     "z-session-initializer": "0.0.3",
     "z-translate-client-initializer": "0.0.1",
-    "z-validator-initializer": "0.0.1"
+    "z-validator-initializer": "0.0.2"
   },
   "devDependencies": {}
 }

@@ -15,6 +15,7 @@ var initializersLoader = require("./core/bin/initializers-loader");
  */
 var fs = require("fs");
 var camelCase = require('camelcase');
+var lodash = require("lodash");
 
 /**
  * load initializers
@@ -31,6 +32,8 @@ var app = {
     },
 
     env: process.env.NODE_ENV,
+
+    _: lodash,
 
     utils: {
         buildModulesInFolder: function (app, namespace, dir) {
