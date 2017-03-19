@@ -7,7 +7,10 @@ exports.default = function (app) {
             host: 'localhost',
             port: 5000,
             path: '/api/',
-            secret: 'secret'
+            secret: 'secret',
+            resave: false,
+            saveUninitialized: true,
+            cookie: {secure: false}
         }
     }
 };

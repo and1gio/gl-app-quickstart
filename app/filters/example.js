@@ -12,6 +12,15 @@ module.exports = function (app) {
         example2: function(data, req, res, next){
             app.logger.info(data);
             next();
+        },
+        incomingDataLogger: function (data, req, res, next) {
+            app.logger.info(data, req.body);
+
+            if(data === "chveni loggeri"){
+                return res.json({"a": "asdasda"})
+            }
+
+            next();
         }
     }
 };

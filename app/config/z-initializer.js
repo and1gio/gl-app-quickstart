@@ -7,7 +7,7 @@ exports.default = function (app) {
             { type: 'module', name: 'z-express-initializer', enabled: true },
             { type: 'module', name: 'z-session-initializer', enabled: true },
             { type: 'module', name: 'z-api-request-helper-initializer', enabled: true },
-            { type: 'module', name: 'z-route-controller-initializer', enabled: true },
+            { type: 'module', name: 'z-service-initializer', enabled: true },
             { type: 'module', name: 'z-translate-client-initializer', enabled: true },
             { type: 'module', name: 'z-errors-client-initializer', enabled: true },
             { type: 'module', name: 'z-file-server-client-initializer', enabled: true },

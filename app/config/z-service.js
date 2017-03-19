@@ -3,8 +3,8 @@
  */
 exports.default = function (app) {
     return {
-        zRouteController : {
-            "rootDir" : "route-controllers"
+        zService : {
+            "rootDir" : "services"
         }
     }
 };
