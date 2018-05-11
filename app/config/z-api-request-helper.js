@@ -1,7 +1,7 @@
 /**
  *  NODE_ENV = undefined
  */
-exports.default = function (app) {
+exports.default = (app) => {
     return {
         zApiRequestHelper: {
             exampleApi: {
@@ -17,7 +17,7 @@ exports.default = function (app) {
 /**
  *  NODE_ENV = development
  */
-exports.development = function (app) {
+exports.development = (app) => {
     return {
         zApiRequestHelper: {
             exampleApi: {
@@ -32,7 +32,7 @@ exports.development = function (app) {
 /**
  *  NODE_ENV = staging
  */
-exports.staging = function (app) {
+exports.staging = (app) => {
     return {
         zApiRequestHelper: {
             exampleApi: {
@@ -47,7 +47,7 @@ exports.staging = function (app) {
 /**
  *  NODE_ENV = production
  */
-exports.production = function (app) {
+exports.production = (app) => {
     return {
         zApiRequestHelper: {
             exampleApi: {

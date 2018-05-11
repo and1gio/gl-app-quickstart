@@ -1,4 +1,4 @@
-exports.default = function (app) {
+exports.default = (app) => {
     return {
         zValidator: {
             rootDir: 'validator-rules',

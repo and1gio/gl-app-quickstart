@@ -3,24 +3,24 @@
 /**
  * Current Directory
  */
-var dir = __dirname;
+const dir = __dirname;
 
 /**
  * Module dependencies.
  */
-var initializersLoader = require("./core/bin/initializers-loader");
+const initializersLoader = require("./core/bin/initializers-loader");
 
 /**
  * Required Modules
  */
-var fs = require("fs");
-var camelCase = require('camelcase');
-var lodash = require("lodash");
+const fs = require("fs");
+const camelCase = require('camelcase');
+const lodash = require("lodash");
 
 /**
  * load initializers
  */
-var app = {
+const app = {
 
     folderPath: {
         root: dir,
@@ -36,22 +36,22 @@ var app = {
     _: lodash,
 
     utils: {
-        buildModulesInFolder: function (app, namespace, dir) {
+        buildModulesInFolder: (app, namespace, dir) => {
             if (fs.existsSync(dir)) {
-                var rootDir = fs.readdirSync(dir);
+                const rootDir = fs.readdirSync(dir);
 
                 if (rootDir && rootDir.length > 0) {
-                    rootDir.forEach(function (file) {
-                        var nameParts = file.split('/');
-                        var name = camelCase(nameParts[(nameParts.length - 1)].split(".")[0]);
-                        var filePath = dir + file;
+                    rootDir.forEach((file) => {
+                        const nameParts = file.split('/');
+                        const name = camelCase(nameParts[(nameParts.length - 1)].split(".")[0]);
+                        const filePath = dir + file;
 
                         if (fs.lstatSync(filePath).isDirectory()) {
                             namespace[name] = {};
                             return app.utils.buildModulesInFolder(app, namespace[name], filePath + '/');
                         } else {
                             if (fs.existsSync(filePath)) {
-                                var module = require(filePath);
+                                const module = require(filePath);
                                 namespace[name] = new module(app);
                             }
                         }
@@ -59,13 +59,13 @@ var app = {
                 }
             }
         },
-        callSessionLoaders: function (valNamespace, fnNamespace, req, asyncFunctions) {
-            for (var i in fnNamespace) {
+        callSessionLoaders: (valNamespace, fnNamespace, req, asyncFunctions) => {
+            for (let i in fnNamespace) {
                 if (typeof fnNamespace[i] == "function" || typeof fnNamespace[i].fn == "function") {
-                    asyncFunctions.push((function (index) {
-                        var fn = fnNamespace[index].fn || fnNamespace[index];
+                    asyncFunctions.push(((index) => {
+                        const fn = fnNamespace[index].fn || fnNamespace[index];
                         return function (next) {
-                            fn(req, function (err, res) {
+                            fn(req, (err, res) => {
                                 if (!err) {
                                     valNamespace[index] = res;
                                 }
@@ -88,5 +88,5 @@ var app = {
 /**
  * Start Initializer Loader
  */
-initializersLoader(app, function (err) {
+initializersLoader(app, (err) => {
 });

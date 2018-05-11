@@ -1,22 +1,22 @@
 'use strict';
 
-var fs = require("fs");
-var winston = require('winston');
+const fs = require("fs");
+const winston = require('winston');
 
-var startInitializerChain = function (app, initializers, cb) {
-    var index = 0;
+const startInitializerChain = (app, initializers, cb) => {
+    let index = 0;
     startInitializer(app, initializers, index, cb);
 };
 
-var startInitializer = function (app, initializers, index, cb) {
-    var initializer = initializers[index];
+const startInitializer = (app, initializers, index, cb) => {
+    const initializer = initializers[index];
     if (!initializer) {
         return cb();
     }
 
     app.logger.info(initializer.name);
 
-    initializer.run(app, function (err) {
+    initializer.run(app, (err) => {
         if (err) {
             app.logger.warn(err);
             process.exit(1);
@@ -27,21 +27,21 @@ var startInitializer = function (app, initializers, index, cb) {
     });
 };
 
-var loadInitializers = function (app) {
-    var initializers = app.config.zInitializer;
-    var modules = [];
+const loadInitializers = (app) => {
+    const initializers = app.config.zInitializer;
+    const modules = [];
 
-    for(var i in initializers){
+    for(let i in initializers){
         if(initializers[i].enabled){
-            var module = null;
-            var name = initializers[i].name;
+            const name = initializers[i].name;
+            let module = null;
 
             switch (initializers[i].type) {
                 case 'module':
                     module = require(name);
                     break;
                 case 'app':
-                    var path = app.folderPath.app.initializer;
+                    const path = app.folderPath.app.initializer;
                     module = require(path + name);
                     break;
                 default:
@@ -54,7 +54,7 @@ var loadInitializers = function (app) {
     return modules;
 };
 
-module.exports = function (app, cb) {
+module.exports = (app, cb) => {
     app.logger = winston;
 
     console.log("APPLICATION STARTED");
@@ -63,7 +63,7 @@ module.exports = function (app, cb) {
     app.logger.info('ROOT FOLDER:', app.folderPath.root);
     app.logger.info('MACHINE ENVIRONMENT:', app.env);
 
-    require("./configs-loader")(app, function(){
+    require("./configs-loader")(app,() => {
         console.log("****************************");
         console.log("CONFIGS LOADED SUCCESSFULLY");
         console.log("****************************");
@@ -71,12 +71,12 @@ module.exports = function (app, cb) {
     console.log("=========================");
 
 
-    var modules = loadInitializers(app);
+    const modules = loadInitializers(app);
 
     console.log("INITIALIZERS: STARTED");
     console.log("=========================");
 
-    startInitializerChain(app, modules, function (err) {
+    startInitializerChain(app, modules, (err) => {
         console.log("=========================");
         console.log("INITIALIZERS: FINISHED");
         console.log("=========================");

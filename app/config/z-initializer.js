@@ -1,7 +1,7 @@
 /**
  *  NODE_ENV = undefined
  */
-exports.default = function (app) {
+exports.default = (app) => {
     return {
         zInitializer: [
             { type: 'module', name: 'z-express-initializer', enabled: true },

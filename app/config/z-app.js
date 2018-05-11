@@ -1,7 +1,7 @@
 /**
  *  NODE_ENV = undefined
  */
-exports.default = function (app) {
+exports.default = (app) => {
     return {
         zApp: {
             port: 8000,

@@ -1,7 +1,7 @@
 /**
  *  NODE_ENV = undefined
  */
-exports.default = function (app) {
+exports.default = (app) => {
     return {
         zService : {
             "rootDir" : "services"

@@ -1,4 +1,8 @@
-exports.default = function (app) {
+/**
+ *  NODE_ENV = undefined
+ */
+
+exports.default = (app) => {
     return {
         zRoute: {
             rootDir: 'routes',
